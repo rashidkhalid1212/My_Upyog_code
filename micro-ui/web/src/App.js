@@ -23,11 +23,11 @@ import { initLibraries } from "@egovernments/digit-ui-libraries";
 //   HRMSModule,
 //   initHRMSComponents,
 // } from "@egovernments/digit-ui-module-hrms";
-// import {
-//   TLModule,
-//   TLLinks,
-//   initTLComponents,
-// } from "@egovernments/digit-ui-module-tl";
+import {
+  TLModule,
+  TLLinks,
+  initTLComponents,
+} from "@egovernments/digit-ui-module-tl";
 // import { initReceiptsComponents, ReceiptsModule } from "@egovernments/digit-ui-module-receipts";
 // import { initOBPSComponents } from "@egovernments/digit-ui-module-obps";
 // import { initNOCComponents } from "@egovernments/digit-ui-module-noc";
@@ -50,7 +50,7 @@ const enabledModules = [
   // "NDSS",
   // "MCollect",
   // "HRMS",
-  // "TL",
+  "TL",
   // "Receipts",
   // "OBPS",
   // "NOC",
@@ -75,8 +75,8 @@ window.Digit.ComponentRegistryService.setupRegistry({
   // MCollectLinks,
   // MCollectModule,
   // HRMSModule,
-  // TLModule,
-  // TLLinks,
+  TLModule,
+  TLLinks,
   // ReceiptsModule
 });
 
@@ -85,7 +85,7 @@ initPGRComponents();
 // initDSSComponents();
 // initMCollectComponents();
 // initHRMSComponents();
-// initTLComponents();
+initTLComponents();
 // initReceiptsComponents();
 // initOBPSComponents();
 // initNOCComponents();

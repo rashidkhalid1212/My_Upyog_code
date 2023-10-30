@@ -3,6 +3,7 @@ import { Switch, useLocation, Link } from "react-router-dom";
 import { PrivateRoute, BreadCrumb } from "@egovernments/digit-ui-react-components";
 import { useTranslation } from "react-i18next";
 import Inbox from "./Inbox";
+import Report from "../../components/Report";
 // import NewApplication from "./NewApplication";
 // import Search from "./Search";
 // import Response from "../Response";
@@ -20,6 +21,7 @@ const TLBreadCrumb = ({ location }) => {
   const isApplicationDetails = location?.pathname?.includes("tl/application-details");
   const isNewApplication = location?.pathname?.includes("tl/new-application");
   const isResponse = location?.pathname?.includes("tl/response");
+  const isReport = location?.pathname?.includes("tl/report");
   const isMobile = window.Digit.Utils.browser.isMobile();
 
   const [search, setSearch] = useState(false);
@@ -39,6 +41,13 @@ const TLBreadCrumb = ({ location }) => {
     if (breadCrumbUrl == "home") sessionStorage.setItem("breadCrumbUrl", "home/search");
     else if (breadCrumbUrl == "inbox") sessionStorage.setItem("breadCrumbUrl", "inbox/search");
     else sessionStorage.setItem("breadCrumbUrl", breadCrumbUrl.includes("home/search") ? "home/search" : "inbox/search")
+
+// report
+  } else if (locationsForTLEmployee.includes("report")) {
+    if (breadCrumbUrl == "home") sessionStorage.setItem("breadCrumbUrl", "home/report");
+    else if (breadCrumbUrl == "inbox") sessionStorage.setItem("breadCrumbUrl", "inbox/report");
+    else sessionStorage.setItem("breadCrumbUrl", breadCrumbUrl.includes("home/report") ? "home/report" : "inbox/report")
+
   } else if (locationsForTLEmployee.includes("new-application")) {
     if (breadCrumbUrl == "home") sessionStorage.setItem("breadCrumbUrl", "home/newApp");
     else if (breadCrumbUrl == "inbox") sessionStorage.setItem("breadCrumbUrl", "inbox/newApp");
@@ -100,6 +109,14 @@ const TLBreadCrumb = ({ location }) => {
       breadCrumbUrls.includes("inbox/license")
     },
     {
+      path: "/digit-ui/employee/tl/report",
+      content: t("ES_TITLE_REPORT"), // created for report component
+      show: isReport || 
+      breadCrumbUrls.includes("home/report") || 
+      breadCrumbUrls.includes("inbox/report")
+    },
+
+    {
       path: sessionStorage.getItem("applicationNumber") ? `/digit-ui/employee/tl/application-details/${sessionStorage.getItem("applicationNumber")}` : "",
       content: t("TL_DETAILS_HEADER_LABEL"),
       show: isApplicationDetails ||
@@ -156,6 +173,7 @@ const EmployeeApp = ({ path, url, userType }) => {
   const ReNewApplication = Digit?.ComponentRegistryService?.getComponent('TLReNewApplication');
   const Response = Digit?.ComponentRegistryService?.getComponent('TLResponse');
   const Search = Digit?.ComponentRegistryService?.getComponent('TLSearch');
+  const Report = Digit?.ComponentRegistryService?.getComponent('Report')
 
   return (
     <Switch>
@@ -194,6 +212,8 @@ const EmployeeApp = ({ path, url, userType }) => {
           <PrivateRoute path={`${path}/edit-application-details/:id`} component={(props) => <ReNewApplication {...props} header={t("TL_ACTION_RESUBMIT")} parentRoute={path} />} />
           <PrivateRoute path={`${path}/response`} component={(props) => <Response {...props} parentRoute={path} />} />
           <PrivateRoute path={`${path}/search/:variant`} component={(props) => <Search {...props} parentRoute={path} />} />
+
+          <PrivateRoute path={`${path}/report`} component={(props) => <Report {...props} parentRoute={path} />} />
           
         </div>
       </React.Fragment>

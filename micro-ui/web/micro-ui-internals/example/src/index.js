@@ -5,7 +5,7 @@ import { initLibraries } from "@egovernments/digit-ui-libraries";
 import { PGRReducers } from "@egovernments/digit-ui-module-pgr";
 // import { PTModule, PTLinks, PTComponents } from "@egovernments/digit-ui-module-pt";
 // import { MCollectModule, MCollectLinks } from "@egovernments/digit-ui-module-mcollect";
-// // import { TLModule, TLLinks } from "@egovernments/digit-ui-module-tl";
+import { TLModule, TLLinks } from "@egovernments/digit-ui-module-tl";
 // import { initFSMComponents } from "@egovernments/digit-ui-module-fsm";
 import { initPGRComponents } from "@egovernments/digit-ui-module-pgr";
 // import { initDSSComponents } from "@egovernments/digit-ui-module-dss";
@@ -13,7 +13,7 @@ import { initPGRComponents } from "@egovernments/digit-ui-module-pgr";
 // import { initReceiptsComponents, ReceiptsModule } from "@egovernments/digit-ui-module-receipts";
 // // import { initReportsComponents } from "@egovernments/digit-ui-module-reports";
 // import { initMCollectComponents } from "@egovernments/digit-ui-module-mcollect";
-// import { initTLComponents } from "@egovernments/digit-ui-module-tl";
+import { initTLComponents } from "@egovernments/digit-ui-module-tl";
 // import { PaymentModule, PaymentLinks, paymentConfigs } from "@egovernments/digit-ui-module-common";
 // import { HRMSModule } from "@egovernments/digit-ui-module-hrms";
 // import { initOBPSComponents } from "@egovernments/digit-ui-module-obps";
@@ -47,7 +47,7 @@ const enabledModules = [
   // "DSS",
   // "MCollect",
   // "HRMS",
-  // "TL",
+  "TL",
   // "Receipts",
   // "Reports",
   // "OBPS",
@@ -106,8 +106,8 @@ const initDigitUI = () => {
     // ReceiptsModule,
     // BillsModule,
 
-    // TLModule,
-    // TLLinks,
+    TLModule,
+    TLLinks,
   });
 
   // initFSMComponents();
@@ -115,7 +115,7 @@ const initDigitUI = () => {
   // initDSSComponents();
   // initMCollectComponents();
   // initHRMSComponents();
-  // initTLComponents();
+  initTLComponents();
   // initReceiptsComponents();
   // // initReportsComponents();
   // initOBPSComponents();
